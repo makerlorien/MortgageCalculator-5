@@ -1,6 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MortgageCalculator1._0;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MortgageCalculator2;
 
 namespace MortgageCalculator.Tests
 {
