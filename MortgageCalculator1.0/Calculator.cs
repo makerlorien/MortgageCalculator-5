@@ -15,33 +15,30 @@
         {
         }
 
-        public decimal CalculateMonthlyPayment(int y, decimal ar, decimal pp, decimal dp)
+        public decimal CalculateMonthlyPayment(int yearsInMortgage, decimal annualInterestRate, decimal purchasePrice, decimal downPayment)
         {
-            decimal M = 0.0M;
+            decimal monthlyPayment = 0.0M;
 
-            // Amount financed
-            decimal P = pp - dp;
+            decimal principalFinanced = purchasePrice - downPayment;
 
-            // Monthly rate
-            decimal r = ar / 12;
+            decimal monthlyInterestRate = annualInterestRate / 12;
 
-            // Months of payments
-            int n = y * 12;
+            int monthsInMortgage = yearsInMortgage * 12;
 
             decimal x = 0;
 
-            if (n > 0)
+            if (monthsInMortgage > 0)
             {
                 // Power formula for the numerator
                 decimal temp = 1;
 
                 int i = 0;
 
-                while (i < n)
+                while (i < monthsInMortgage)
                 {
                     i++;
 
-                    temp = temp * (1 + r);
+                    temp = temp * (1 + monthlyInterestRate);
                 }
 
                 x = temp;
@@ -49,16 +46,16 @@
 
             decimal z = 0;
 
-            if (n > 0)
+            if (monthsInMortgage > 0)
             {
                 // Power formula for the denominator
                 decimal temp = 1;
 
                 int i = 1;
 
-                while (i <= n)
+                while (i <= monthsInMortgage)
                 {
-                    temp = temp * (1 + r);
+                    temp = temp * (1 + monthlyInterestRate);
                     i++;
                 }
 
@@ -68,13 +65,13 @@
             if (z == 1)
             {
                 // Prevent divide by zero error
-                M = P / n;
+                monthlyPayment = principalFinanced / monthsInMortgage;
             }
             else
             {
-                M = P * ((r * x) / (z - 1));
+                monthlyPayment = principalFinanced * ((monthlyInterestRate * x) / (z - 1));
             }
-            return M;
+            return monthlyPayment;
         }
     }
 }
