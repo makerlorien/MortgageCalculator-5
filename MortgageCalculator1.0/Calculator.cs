@@ -25,53 +25,46 @@
 
             int monthsInMortgage = yearsInMortgage * 12;
 
-            decimal x = 0;
+            decimal numeratorPower = 0;
 
             if (monthsInMortgage > 0)
             {
-                // Power formula for the numerator
-                decimal temp = 1;
-
-                int i = 0;
-
-                while (i < monthsInMortgage)
-                {
-                    i++;
-
-                    temp = temp * (1 + monthlyInterestRate);
-                }
-
-                x = temp;
+                numeratorPower = RaiseDecimalToPowerOfTerm(monthlyInterestRate, monthsInMortgage);
             }
 
-            decimal z = 0;
+            decimal denominatorPower = 0;
 
             if (monthsInMortgage > 0)
             {
-                // Power formula for the denominator
-                decimal temp = 1;
-
-                int i = 1;
-
-                while (i <= monthsInMortgage)
-                {
-                    temp = temp * (1 + monthlyInterestRate);
-                    i++;
-                }
-
-                z = temp;
+                denominatorPower = RaiseDecimalToPowerOfTerm(monthlyInterestRate, monthsInMortgage);
             }
 
-            if (z == 1)
+            if (denominatorPower == 1)
             {
                 // Prevent divide by zero error
                 monthlyPayment = principalFinanced / monthsInMortgage;
             }
             else
             {
-                monthlyPayment = principalFinanced * ((monthlyInterestRate * x) / (z - 1));
+                monthlyPayment = principalFinanced * ((monthlyInterestRate * numeratorPower) / (denominatorPower - 1));
             }
             return monthlyPayment;
+        }
+
+        private static decimal RaiseDecimalToPowerOfTerm(decimal rate, int term)
+        {
+            decimal rateToPowerOfTerm = 1;
+
+            int i = 1;
+
+            while (i <= term)
+            {
+                i++;
+
+                rateToPowerOfTerm = rateToPowerOfTerm * (1 + rate);
+            }
+
+            return rateToPowerOfTerm;
         }
     }
 }
