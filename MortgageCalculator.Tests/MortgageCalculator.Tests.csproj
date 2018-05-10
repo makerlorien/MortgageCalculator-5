@@ -55,9 +55,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MortgageCalculator1.0\MortgageCalculator2.0.csproj">
+    <ProjectReference Include="..\MortgageCalculator1.0\MortgageCalculator3.0.csproj">
       <Project>{0E6E155E-2905-4C68-8CC5-C8D802D6F90A}</Project>
-      <Name>MortgageCalculator2.0</Name>
+      <Name>MortgageCalculator3.0</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
