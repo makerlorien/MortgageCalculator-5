@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MortgageCalculator4;
+using MortgageCalculator5;
 
 namespace MortgageCalculator.Tests
 {
