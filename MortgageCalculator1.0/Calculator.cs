@@ -21,31 +21,27 @@
 
             decimal principalFinanced = purchasePrice - downPayment;
 
-            decimal monthlyInterestRate = annualInterestRate / 12;
+            if (yearsInMortgage == 0)
+            {
+                return principalFinanced;
+            }
 
             int monthsInMortgage = yearsInMortgage * 12;
 
-            decimal numerator = 1.0M;
-
-            if (monthsInMortgage > 0)
+            if (annualInterestRate == 0)
             {
-                numerator = CalculateNumerator(monthlyInterestRate, monthsInMortgage);
+                return principalFinanced / monthsInMortgage;
             }
+
+            decimal monthlyInterestRate = annualInterestRate / 12;
+
+            decimal numerator = 1.0M;
             decimal denominator = 1.0M;
 
-            if (monthsInMortgage > 0)
-            {
-                denominator = CalculateDenominator(monthlyInterestRate, monthsInMortgage);
-            }
+            numerator = CalculateNumerator(monthlyInterestRate, monthsInMortgage);
+            denominator = CalculateDenominator(monthlyInterestRate, monthsInMortgage);
 
-            if (denominator == 0)
-            {
-                monthlyPayment = principalFinanced / monthsInMortgage;
-            }
-            else
-            {
-                monthlyPayment = principalFinanced * ( numerator / denominator);
-            }
+            monthlyPayment = principalFinanced * (numerator / denominator);
             return monthlyPayment;
         }
 
