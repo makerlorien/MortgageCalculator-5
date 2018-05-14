@@ -27,8 +27,18 @@ namespace MortgageCalculator4
 
             int monthsInMortgage = yearsInMortgage * 12;
 
-            decimal numerator = CalculateNumerator(monthlyInterestRate, monthsInMortgage);
-            decimal denominator = CalculateDenominator(monthlyInterestRate, monthsInMortgage);
+            decimal numerator = 1.0M;
+
+            if (monthsInMortgage > 0)
+            {
+                numerator = CalculateNumerator(monthlyInterestRate, monthsInMortgage);
+            }
+            decimal denominator = 1.0M;
+
+            if (monthsInMortgage > 0)
+            {
+                denominator = CalculateDenominator(monthlyInterestRate, monthsInMortgage);
+            }
 
             if (denominator == 0)
             {
