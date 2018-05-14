@@ -1,4 +1,4 @@
-﻿namespace MortgageCalculator3
+﻿namespace MortgageCalculator4
 {
     public class Calculator
     {

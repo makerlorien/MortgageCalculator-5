@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageCalculator3.0", "MortgageCalculator1.0\MortgageCalculator3.0.csproj", "{0E6E155E-2905-4C68-8CC5-C8D802D6F90A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageCalculator4.0", "MortgageCalculator1.0\MortgageCalculator4.0.csproj", "{0E6E155E-2905-4C68-8CC5-C8D802D6F90A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MortgageCalculator.Tests", "MortgageCalculator.Tests\MortgageCalculator.Tests.csproj", "{7A84D7D9-BA6E-40C6-B5F8-FB3267AA582A}"
 EndProject
