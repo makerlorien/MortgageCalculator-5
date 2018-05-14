@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MortgageCalculator4
+﻿namespace MortgageCalculator4
 {
     public class Calculator
     {
