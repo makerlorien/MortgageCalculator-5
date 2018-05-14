@@ -25,28 +25,26 @@
 
             int monthsInMortgage = yearsInMortgage * 12;
 
-            decimal numeratorPower = 0;
+            decimal numerator = 1.0M;
 
             if (monthsInMortgage > 0)
             {
-                numeratorPower = RaiseDecimalToPowerOfTerm(monthlyInterestRate, monthsInMortgage);
+                numerator = CalculateNumerator(monthlyInterestRate, monthsInMortgage);
             }
-
-            decimal denominatorPower = 0;
+            decimal denominator = 1.0M;
 
             if (monthsInMortgage > 0)
             {
-                denominatorPower = RaiseDecimalToPowerOfTerm(monthlyInterestRate, monthsInMortgage);
+                denominator = CalculateDenominator(monthlyInterestRate, monthsInMortgage);
             }
 
-            if (denominatorPower == 1)
+            if (denominator == 0)
             {
-                // Prevent divide by zero error
                 monthlyPayment = principalFinanced / monthsInMortgage;
             }
             else
             {
-                monthlyPayment = principalFinanced * ((monthlyInterestRate * numeratorPower) / (denominatorPower - 1));
+                monthlyPayment = principalFinanced * ( numerator / denominator);
             }
             return monthlyPayment;
         }
@@ -65,6 +63,20 @@
             }
 
             return rateToPowerOfTerm;
+        }
+
+        private decimal CalculateNumerator(decimal monthlyRate, int numberOfMonths)
+        {
+            decimal numeratorPower = RaiseDecimalToPowerOfTerm(monthlyRate, numberOfMonths);
+
+            return monthlyRate * numeratorPower;
+        }
+
+        private decimal CalculateDenominator(decimal monthlyRate, int numberOfMonths)
+        {
+            decimal denominatorPower = RaiseDecimalToPowerOfTerm(monthlyRate, numberOfMonths);
+
+            return denominatorPower - 1;
         }
     }
 }
